@@ -448,54 +448,58 @@
           <h2>Private Viewing</h2>
           <span>Leave your details and our team will arrange the latest availability and viewing slot.</span>
         </div>
-        <form class="lead-form">
+        <form class="lead-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="b56d47f0-9e05-40d3-b182-a6ade7c730fd" />
+          <input type="hidden" name="subject" value="New Celestz Website Registration" />
+          <input type="hidden" name="from_name" value="Celestz EXSIM Landing Page" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
           <label>
             <span>Name</span>
-            <input type="text" placeholder="Your name" />
+            <input type="text" name="name" placeholder="Your name" required />
           </label>
           <label>
             <span>Phone Number</span>
             <div class="phone-row">
-              <select aria-label="Country code">
-                <option>+60 MY</option>
-                <option>+65 SG</option>
-                <option>+62 ID</option>
-                <option>+66 TH</option>
-                <option>+86 CN</option>
+              <select name="country_code" aria-label="Country code" required>
+                <option value="+60 MY">+60 MY</option>
+                <option value="+65 SG">+65 SG</option>
+                <option value="+62 ID">+62 ID</option>
+                <option value="+66 TH">+66 TH</option>
+                <option value="+86 CN">+86 CN</option>
               </select>
-              <input type="tel" placeholder="123456789" />
+              <input type="tel" name="phone" placeholder="123456789" required />
             </div>
           </label>
           <label>
             <span>Email Address</span>
-            <input type="email" placeholder="you@email.com" />
+            <input type="email" name="email" placeholder="you@email.com" required />
           </label>
           <label>
             <span>Preferred Unit Type</span>
-            <select>
-              <option>Select preferred unit</option>
-              <option>Type A - 1R + 1 Study, 1 Bath + 1 WC, 581 sq.ft.</option>
-              <option>Type B - 2 Rooms, 3 Baths, 753 sq.ft.</option>
-              <option>Type C1 / C1A - 3 Rooms, 2 Baths, 915 sq.ft. (With Balcony)</option>
-              <option>Type C2 / C2A - 3 Rooms, 2 Baths, 915 sq.ft. (Without Balcony)</option>
+            <select name="preferred_unit_type" required>
+              <option value="">Select preferred unit</option>
+              <option value="Type A - 1R + 1 Study, 1 Bath + 1 WC, 581 sq.ft.">Type A - 1R + 1 Study, 1 Bath + 1 WC, 581 sq.ft.</option>
+              <option value="Type B - 2 Rooms, 3 Baths, 753 sq.ft.">Type B - 2 Rooms, 3 Baths, 753 sq.ft.</option>
+              <option value="Type C1 / C1A - 3 Rooms, 2 Baths, 915 sq.ft. (With Balcony)">Type C1 / C1A - 3 Rooms, 2 Baths, 915 sq.ft. (With Balcony)</option>
+              <option value="Type C2 / C2A - 3 Rooms, 2 Baths, 915 sq.ft. (Without Balcony)">Type C2 / C2A - 3 Rooms, 2 Baths, 915 sq.ft. (Without Balcony)</option>
             </select>
           </label>
           <label>
             <span>Nationality</span>
-            <select>
-              <option>Malaysian</option>
-              <option>Singaporean</option>
-              <option>Others</option>
+            <select name="nationality" required>
+              <option value="Malaysian">Malaysian</option>
+              <option value="Singaporean">Singaporean</option>
+              <option value="Others">Others</option>
             </select>
           </label>
           <label>
             <span>Purpose of Buying</span>
-            <select>
-              <option>Own Stay</option>
-              <option>Invest</option>
+            <select name="purpose_of_buying" required>
+              <option value="Own Stay">Own Stay</option>
+              <option value="Invest">Invest</option>
             </select>
           </label>
-          <button class="btn primary compact form-submit" type="button">Submit Registration <span>→</span></button>
+          <button class="btn primary compact form-submit" type="submit">Submit Registration <span>→</span></button>
         </form>
       </section>
     </main>

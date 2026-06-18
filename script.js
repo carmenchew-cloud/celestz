@@ -168,3 +168,39 @@ imageModal?.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeImageModal();
 });
+
+const leadForm = document.querySelector(".lead-form");
+const leadSubmit = leadForm?.querySelector(".form-submit");
+const leadSubmitText = leadSubmit?.innerHTML;
+
+leadForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!leadForm.reportValidity()) return;
+
+  if (leadSubmit) {
+    leadSubmit.disabled = true;
+    leadSubmit.innerHTML = "Submitting...";
+  }
+
+  try {
+    const response = await fetch(leadForm.action, {
+      method: "POST",
+      body: new FormData(leadForm),
+    });
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || "Submission failed");
+    }
+
+    leadForm.reset();
+    window.alert("Thank you. Your registration has been submitted.");
+  } catch (error) {
+    window.alert("Sorry, the form could not be submitted. Please WhatsApp us directly.");
+  } finally {
+    if (leadSubmit) {
+      leadSubmit.disabled = false;
+      leadSubmit.innerHTML = leadSubmitText;
+    }
+  }
+});
