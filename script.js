@@ -1,9 +1,24 @@
 const galleryImages = [
-  "assets/site/pool.jpg",
-  "assets/site/lobby.jpg",
-  "assets/site/facilities-plan-new.jpg",
-  "assets/site/freebies-1.jpg",
-  "assets/site/freebies-2.jpg",
+  {
+    src: "assets/site/pool.jpg",
+    alt: "The Celestz starlight pool and sky facilities",
+  },
+  {
+    src: "assets/site/lobby.jpg",
+    alt: "The Celestz grand lobby at Kebun Teh Johor Bahru",
+  },
+  {
+    src: "assets/site/facilities-plan-new.jpg",
+    alt: "The Celestz facilities plan with pool, gymnasium and lifestyle deck",
+  },
+  {
+    src: "assets/site/freebies-1.jpg",
+    alt: "The Celestz developer package and lifestyle benefits",
+  },
+  {
+    src: "assets/site/freebies-2.jpg",
+    alt: "The Celestz EXSIM sales package highlights",
+  },
 ];
 
 const galleryMain = document.querySelector(".gallery-main");
@@ -11,7 +26,8 @@ const dotWrap = document.querySelector(".gallery-dots");
 let galleryIndex = 0;
 
 function renderGallery() {
-  galleryMain.src = galleryImages[galleryIndex];
+  galleryMain.src = galleryImages[galleryIndex].src;
+  galleryMain.alt = galleryImages[galleryIndex].alt;
   [...dotWrap.children].forEach((dot, index) => {
     dot.classList.toggle("active", index === galleryIndex);
   });
