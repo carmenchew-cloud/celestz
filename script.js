@@ -173,6 +173,19 @@ const leadForm = document.querySelector(".lead-form");
 const leadSubmit = leadForm?.querySelector(".form-submit");
 const leadSubmitText = leadSubmit?.innerHTML;
 
+function trackGenerateLead() {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push([
+    "event",
+    "generate_lead",
+    {
+      send_to: "G-24V2SX977F",
+      form_name: "contact_form",
+      method: "web3forms",
+    },
+  ]);
+}
+
 leadForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!leadForm.reportValidity()) return;
@@ -193,6 +206,7 @@ leadForm?.addEventListener("submit", async (event) => {
       throw new Error(result.message || "Submission failed");
     }
 
+    trackGenerateLead();
     leadForm.reset();
     window.alert("Thank you. Your registration has been submitted.");
   } catch (error) {
