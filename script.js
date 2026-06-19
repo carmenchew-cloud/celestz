@@ -175,15 +175,14 @@ const leadSubmitText = leadSubmit?.innerHTML;
 
 function trackGenerateLead() {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push([
-    "event",
-    "generate_lead",
-    {
-      send_to: "G-24V2SX977F",
-      form_name: "contact_form",
-      method: "web3forms",
-    },
-  ]);
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("event", "generate_lead", {
+    send_to: "G-24V2SX977F",
+    form_name: "contact_form",
+    method: "web3forms",
+  });
 }
 
 leadForm?.addEventListener("submit", async (event) => {
